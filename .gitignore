@@ -1,0 +1,27 @@
+# Docs (scraped reference)
+docs/
+
+# Server
+server/node_modules/
+server/dist/
+server/.env
+server/*.log
+server/drizzle/
+
+# Mod
+mod/build/
+mod/build-*/
+*.geode
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Misc
+*.log
+.env
+.env.*
+!.env.example

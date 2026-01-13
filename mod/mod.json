@@ -1,0 +1,32 @@
+{
+    "geode": "4.10.0",
+    "gd": {
+        "win": "2.2074",
+        "mac": "2.2074",
+        "android": "2.2074"
+    },
+    "id": "com.tuudug.yuki",
+    "name": "Yuki",
+    "version": "v1.0.0",
+    "developer": "tuudug",
+    "description": "Track and share your GD scores to Discord. Link your Discord account, and your passes/fails are automatically recorded. Use /recent in Discord to show your latest play - just like osu!",
+    "tags": ["online", "utility", "interface"],
+    "links": {
+        "source": "https://github.com/tuudug/Yuki-bot"
+    },
+    "settings": {
+        "auto-submit": {
+            "name": "Auto Submit Scores",
+            "description": "Automatically send scores to server when you pass or fail a level",
+            "type": "bool",
+            "default": true
+        },
+        "submit-fails": {
+            "name": "Submit Failed Attempts",
+            "description": "Also send scores when you fail or quit a level",
+            "type": "bool",
+            "default": true,
+            "enable-if": "auto-submit"
+        }
+    }
+}
