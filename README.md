@@ -1,6 +1,4 @@
-# Yuki - GD Recent Score Discord Bot
-
-A Geometry Dash mod + Discord bot that lets you share your recent scores to Discord
+# Yuki-bot
 
 ## Overview
 
@@ -10,10 +8,10 @@ Just a discord mod that allows you to /rs your passes or fails like the osu! bot
 
 ### Discord Commands
 
-| Command          | Description                                             |
-| ---------------- | ------------------------------------------------------- |
-| `/recent or /rs` | Display your most recent GD score (only visible to you) |
-| `/link`          | Get instructions to link your GD account                |
+| Command          | Description                              |
+| ---------------- | ---------------------------------------- |
+| `/recent or /rs` | Display your most recent GD score        |
+| `/link`          | Get instructions to link your GD account |
 
 ## Contributing
 
