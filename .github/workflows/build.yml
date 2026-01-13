@@ -36,7 +36,7 @@ jobs:
         with:
           combine: true
           target: ${{ matrix.config.target }}
-          working-directory: mod
+          path: mod
 
   package:
     name: Package builds
