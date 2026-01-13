@@ -59,28 +59,160 @@ interface DefaultLevelInfo {
 }
 
 const DEFAULT_LEVELS: Record<number, DefaultLevelInfo> = {
-  1: { name: "Stereo Madness", stars: 1, duration: 93, songName: "Stereo Madness", songAuthor: "ForeverBound" },
-  2: { name: "Back On Track", stars: 2, duration: 91, songName: "Back On Track", songAuthor: "DJVI" },
-  3: { name: "Polargeist", stars: 3, duration: 94, songName: "Polargeist", songAuthor: "Step" },
-  4: { name: "Dry Out", stars: 4, duration: 100, songName: "Dry Out", songAuthor: "DJVI" },
-  5: { name: "Base After Base", stars: 5, duration: 111, songName: "Base After Base", songAuthor: "DJVI" },
-  6: { name: "Cant Let Go", stars: 6, duration: 102, songName: "Cant Let Go", songAuthor: "DJVI" },
-  7: { name: "Jumper", stars: 7, duration: 81, songName: "Jumper", songAuthor: "Waterflame" },
-  8: { name: "Time Machine", stars: 8, duration: 94, songName: "Time Machine", songAuthor: "Waterflame" },
-  9: { name: "Cycles", stars: 9, duration: 93, songName: "Cycles", songAuthor: "DJVI" },
-  10: { name: "xStep", stars: 10, duration: 103, songName: "xStep", songAuthor: "DJVI" },
-  11: { name: "Clutterfunk", stars: 11, duration: 104, songName: "Clutterfunk", songAuthor: "Waterflame" },
-  12: { name: "Theory of Everything", stars: 12, duration: 135, songName: "Theory of Everything", songAuthor: "DJ-Nate" },
-  13: { name: "Electroman Adventures", stars: 10, duration: 126, songName: "Electroman Adventures", songAuthor: "Waterflame" },
-  14: { name: "Clubstep", stars: 14, duration: 145, songName: "Clubstep", songAuthor: "DJ-Nate" },
-  15: { name: "Electrodynamix", stars: 12, duration: 132, songName: "Electrodynamix", songAuthor: "DJ-Nate" },
-  16: { name: "Hexagon Force", stars: 12, duration: 119, songName: "Hexagon Force", songAuthor: "Waterflame" },
-  17: { name: "Blast Processing", stars: 10, duration: 90, songName: "Blast Processing", songAuthor: "Waterflame" },
-  18: { name: "Theory of Everything 2", stars: 14, duration: 192, songName: "Theory of Everything 2", songAuthor: "DJ-Nate" },
-  19: { name: "Geometrical Dominator", stars: 10, duration: 154, songName: "Geometrical Dominator", songAuthor: "Waterflame" },
-  20: { name: "Deadlocked", stars: 15, duration: 194, songName: "Deadlocked", songAuthor: "F-777" },
-  21: { name: "Fingerdash", stars: 12, duration: 126, songName: "Fingerdash", songAuthor: "MDK" },
-  22: { name: "Dash", stars: 10, duration: 120, songName: "Dash", songAuthor: "MDK" },
+  1: {
+    name: "Stereo Madness",
+    stars: 1,
+    duration: 93,
+    songName: "Stereo Madness",
+    songAuthor: "ForeverBound",
+  },
+  2: {
+    name: "Back On Track",
+    stars: 2,
+    duration: 91,
+    songName: "Back On Track",
+    songAuthor: "DJVI",
+  },
+  3: {
+    name: "Polargeist",
+    stars: 3,
+    duration: 94,
+    songName: "Polargeist",
+    songAuthor: "Step",
+  },
+  4: {
+    name: "Dry Out",
+    stars: 4,
+    duration: 100,
+    songName: "Dry Out",
+    songAuthor: "DJVI",
+  },
+  5: {
+    name: "Base After Base",
+    stars: 5,
+    duration: 111,
+    songName: "Base After Base",
+    songAuthor: "DJVI",
+  },
+  6: {
+    name: "Cant Let Go",
+    stars: 6,
+    duration: 102,
+    songName: "Cant Let Go",
+    songAuthor: "DJVI",
+  },
+  7: {
+    name: "Jumper",
+    stars: 7,
+    duration: 81,
+    songName: "Jumper",
+    songAuthor: "Waterflame",
+  },
+  8: {
+    name: "Time Machine",
+    stars: 8,
+    duration: 94,
+    songName: "Time Machine",
+    songAuthor: "Waterflame",
+  },
+  9: {
+    name: "Cycles",
+    stars: 9,
+    duration: 93,
+    songName: "Cycles",
+    songAuthor: "DJVI",
+  },
+  10: {
+    name: "xStep",
+    stars: 10,
+    duration: 103,
+    songName: "xStep",
+    songAuthor: "DJVI",
+  },
+  11: {
+    name: "Clutterfunk",
+    stars: 11,
+    duration: 104,
+    songName: "Clutterfunk",
+    songAuthor: "Waterflame",
+  },
+  12: {
+    name: "Theory of Everything",
+    stars: 12,
+    duration: 135,
+    songName: "Theory of Everything",
+    songAuthor: "DJ-Nate",
+  },
+  13: {
+    name: "Electroman Adventures",
+    stars: 10,
+    duration: 126,
+    songName: "Electroman Adventures",
+    songAuthor: "Waterflame",
+  },
+  14: {
+    name: "Clubstep",
+    stars: 14,
+    duration: 145,
+    songName: "Clubstep",
+    songAuthor: "DJ-Nate",
+  },
+  15: {
+    name: "Electrodynamix",
+    stars: 12,
+    duration: 132,
+    songName: "Electrodynamix",
+    songAuthor: "DJ-Nate",
+  },
+  16: {
+    name: "Hexagon Force",
+    stars: 12,
+    duration: 119,
+    songName: "Hexagon Force",
+    songAuthor: "Waterflame",
+  },
+  17: {
+    name: "Blast Processing",
+    stars: 10,
+    duration: 90,
+    songName: "Blast Processing",
+    songAuthor: "Waterflame",
+  },
+  18: {
+    name: "Theory of Everything 2",
+    stars: 14,
+    duration: 192,
+    songName: "Theory of Everything 2",
+    songAuthor: "DJ-Nate",
+  },
+  19: {
+    name: "Geometrical Dominator",
+    stars: 10,
+    duration: 154,
+    songName: "Geometrical Dominator",
+    songAuthor: "Waterflame",
+  },
+  20: {
+    name: "Deadlocked",
+    stars: 15,
+    duration: 194,
+    songName: "Deadlocked",
+    songAuthor: "F-777",
+  },
+  21: {
+    name: "Fingerdash",
+    stars: 12,
+    duration: 126,
+    songName: "Fingerdash",
+    songAuthor: "MDK",
+  },
+  22: {
+    name: "Dash",
+    stars: 10,
+    duration: 120,
+    songName: "Dash",
+    songAuthor: "MDK",
+  },
 };
 
 export function getDefaultLevelName(levelId: number): DefaultLevelInfo | null {
@@ -150,7 +282,7 @@ async function fetchLevelFromGD(levelId: number): Promise<GDLevelInfo | null> {
     let songName = "Unknown";
     let songAuthor = "Unknown";
     const customSongId = parseInt(levelData["35"] || "0");
-    
+
     if (parts[2] && customSongId > 0) {
       // Custom song from Newgrounds
       const songData = parseGDResponse(parts[2].replace(/~\|~/g, ":"));

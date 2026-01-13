@@ -4,6 +4,8 @@
 
 Just a discord mod that allows you to /rs your passes or fails like the osu! bots
 
+Current instance of this bot is running at: https://yuki.tuuli.moe
+
 ---
 
 ### Discord Commands
