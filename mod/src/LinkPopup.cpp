@@ -2,7 +2,8 @@
 #include "YukiManager.hpp"
 #include <Geode/ui/TextInput.hpp>
 
-bool LinkPopup::setup() {
+bool LinkPopup::setup()
+{
     this->setTitle("Discord Account");
 
     auto contentSize = m_mainLayer->getContentSize();
@@ -15,12 +16,12 @@ bool LinkPopup::setup() {
     menu->setPosition({0, 0});
     m_mainLayer->addChild(menu);
 
-    if (isLinked) {
+    if (isLinked)
+    {
         // Linked state UI
         auto linkedLabel = CCLabelBMFont::create(
             ("Linked to: " + username).c_str(),
-            "bigFont.fnt"
-        );
+            "bigFont.fnt");
         linkedLabel->setPosition({centerX, contentSize.height - 80});
         linkedLabel->setScale(0.55f);
         linkedLabel->setColor(ccc3(100, 255, 100));
@@ -34,19 +35,18 @@ bool LinkPopup::setup() {
         auto unlinkBtn = CCMenuItemSpriteExtra::create(
             unlinkBtnSpr,
             this,
-            menu_selector(LinkPopup::onUnlink)
-        );
+            menu_selector(LinkPopup::onUnlink));
         unlinkBtn->setPosition({centerX, contentSize.height - 195});
         menu->addChild(unlinkBtn);
-
-    } else {
+    }
+    else
+    {
         // Unlinked state UI
         auto instructions = CCLabelBMFont::create(
             "1. Click 'Open Browser' to get your code\n"
             "2. Authorize with Discord\n"
             "3. Enter the 6-character code below",
-            "chatFont.fnt"
-        );
+            "chatFont.fnt");
         instructions->setScale(0.65f);
         instructions->setPosition({centerX, contentSize.height - 60});
         instructions->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
@@ -56,8 +56,7 @@ bool LinkPopup::setup() {
         auto browserBtn = CCMenuItemSpriteExtra::create(
             browserBtnSpr,
             this,
-            menu_selector(LinkPopup::onOpenBrowser)
-        );
+            menu_selector(LinkPopup::onOpenBrowser));
         browserBtn->setPosition({centerX, contentSize.height - 110});
         menu->addChild(browserBtn);
 
@@ -71,8 +70,7 @@ bool LinkPopup::setup() {
         m_linkButton = CCMenuItemSpriteExtra::create(
             linkBtnSpr,
             this,
-            menu_selector(LinkPopup::onLink)
-        );
+            menu_selector(LinkPopup::onLink));
         m_linkButton->setPosition({centerX, contentSize.height - 195});
         menu->addChild(m_linkButton);
 
@@ -92,35 +90,41 @@ bool LinkPopup::setup() {
     return true;
 }
 
-void LinkPopup::onUnlink(CCObject* sender) {
+void LinkPopup::onUnlink(CCObject *sender)
+{
     createQuickPopup(
         "Unlink Account",
         "Are you sure you want to <cr>unlink</c> your Discord account?",
         "Cancel", "Unlink",
-        [this](auto, bool btn2) {
-            if (btn2) {
+        [this](auto, bool btn2)
+        {
+            if (btn2)
+            {
                 YukiManager::get()->unlinkAccount();
                 this->onClose(nullptr);
                 FLAlertLayer::create("Unlinked", "Your Discord account has been unlinked.", "OK")->show();
             }
-        }
-    );
+        });
 }
 
-void LinkPopup::onOpenBrowser(CCObject* sender) {
+void LinkPopup::onOpenBrowser(CCObject *sender)
+{
     std::string url = YukiManager::get()->getServerUrl() + "/link";
     web::openLinkInBrowser(url);
 }
 
-void LinkPopup::onLink(CCObject* sender) {
+void LinkPopup::onLink(CCObject *sender)
+{
     std::string code = m_codeInput->getString();
-    
-    if (code.empty()) {
+
+    if (code.empty())
+    {
         showStatus("Please enter a code", true);
         return;
     }
 
-    if (code.length() != 6) {
+    if (code.length() != 6)
+    {
         showStatus("Code must be 6 characters", true);
         return;
     }
@@ -129,7 +133,8 @@ void LinkPopup::onLink(CCObject* sender) {
     int gdAccountId = am->m_accountID;
     std::string gdUsername = am->m_username;
 
-    if (gdAccountId == 0) {
+    if (gdAccountId == 0)
+    {
         showStatus("Please log into your GD account first", true);
         return;
     }
@@ -137,32 +142,38 @@ void LinkPopup::onLink(CCObject* sender) {
     setLoading(true);
     showStatus("Linking...", false);
 
-    YukiManager::get()->linkAccount(code, gdAccountId, gdUsername, 
-        [this](bool success, const std::string& message) {
-            setLoading(false);
-            
-            if (success) {
-                showStatus("Linked to " + message + "!", false);
-                
-                // Close popup after delay
-                this->runAction(CCSequence::create(
-                    CCDelayTime::create(1.5f),
-                    CCCallFunc::create(this, callfunc_selector(LinkPopup::onClose)),
-                    nullptr
-                ));
-            } else {
-                showStatus(message, true);
-            }
-        }
-    );
+    YukiManager::get()->linkAccount(code, gdAccountId, gdUsername,
+                                    [this](bool success, const std::string &message)
+                                    {
+                                        setLoading(false);
+
+                                        if (success)
+                                        {
+                                            showStatus("Linked to " + message + "!", false);
+
+                                            // Close popup after delay
+                                            this->runAction(CCSequence::create(
+                                                CCDelayTime::create(1.5f),
+                                                CCCallFunc::create(this, callfunc_selector(LinkPopup::closePopup)),
+                                                nullptr));
+                                        }
+                                        else
+                                        {
+                                            showStatus(message, true);
+                                        }
+                                    });
 }
 
-void LinkPopup::setLoading(bool loading) {
+void LinkPopup::setLoading(bool loading)
+{
     m_linkButton->setVisible(!loading);
     m_loadingCircle->setVisible(loading);
-    if (loading) {
+    if (loading)
+    {
         m_loadingCircle->show();
-    } else {
+    }
+    else
+    {
         m_loadingCircle->fadeAndRemove();
         m_loadingCircle = LoadingCircle::create();
         m_loadingCircle->setPosition({m_mainLayer->getContentSize().width / 2, m_mainLayer->getContentSize().height - 195});
@@ -172,15 +183,23 @@ void LinkPopup::setLoading(bool loading) {
     }
 }
 
-void LinkPopup::showStatus(const std::string& message, bool isError) {
+void LinkPopup::showStatus(const std::string &message, bool isError)
+{
     m_statusLabel->setString(message.c_str());
     m_statusLabel->setColor(isError ? ccc3(255, 100, 100) : ccc3(100, 255, 100));
     m_statusLabel->setVisible(true);
 }
 
-LinkPopup* LinkPopup::create() {
+void LinkPopup::closePopup()
+{
+    this->onClose(nullptr);
+}
+
+LinkPopup *LinkPopup::create()
+{
     auto ret = new LinkPopup();
-    if (ret && ret->initAnchored(300.f, 260.f)) {
+    if (ret && ret->initAnchored(300.f, 260.f))
+    {
         ret->autorelease();
         return ret;
     }
